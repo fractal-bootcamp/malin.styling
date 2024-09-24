@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
 import Task from './components/Task'
+import TaskList from './components/TaskList'
 import './index.css'
 import {
   createBrowserRouter,
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
     element: <Task />
   },
   {
-    path: "/app",
-    element: <App />
+    path: "/task-list",
+    element: <TaskList />
   }
 
 

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import '../index.css'
 
 //JSX.Element
-function Task() {
+function TaskList() {
 
   interface TaskItem {
     title: string;
@@ -45,7 +45,7 @@ function Task() {
         return (
           <ul key={index}
             className='flex flex-col'>
-            <div className='flex items-center border-2 border-stone-300 rounded-md p-4 bg-zinc-100 mb-2'>
+            <div className='flex items-center border-2 border-stone-300 rounded-md p-4 bg-zinc-100'>
               <input
                 className='flex m-2 appearance-none p-2 bg-white rounded-md border-2'
                 type="checkbox"
@@ -70,7 +70,7 @@ function Task() {
         return (
           <ul key={index}
             className='flex flex-col'>
-            <div className='flex items-center border-2 border-stone-300 bg-green-100 rounded-md p-4 mb-2'>
+            <div className='flex items-center border-2 border-stone-300 bg-green-100 rounded-md p-4'>
               <input
                 className='flex m-2 appearance-none p-2 bg-green-700 rounded-md border-2'
                 type="checkbox"
@@ -108,4 +108,4 @@ function Task() {
   )
 }
 
-export default Task;
+export default TaskList;
