@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Task from './components/Task'
 import TaskList from './components/TaskList'
+import MessageThread from './components/MessageThread'
 import './index.css'
 import {
   createBrowserRouter,
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/task-list",
     element: <TaskList />
+  },
+  {
+    path: "/message-thread",
+    element: <MessageThread />
   }
 
 
