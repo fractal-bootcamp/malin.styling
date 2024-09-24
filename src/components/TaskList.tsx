@@ -3,7 +3,7 @@ import { useState } from 'react'
 import '../index.css'
 
 //JSX.Element
-function Task() {
+function TaskList() {
 
   interface TaskItem {
     title: string;
@@ -109,8 +109,7 @@ function Task() {
         </div>
       </div>
     </div>
-
   )
 }
 
-export default Task;
+export default TaskList;
