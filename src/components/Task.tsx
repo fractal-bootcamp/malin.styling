@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react'
+import '../index.css'
 
 //JSX.Element
 function Task() {
@@ -42,13 +43,21 @@ function Task() {
     return (
       incompleteTasks.map((item: TaskItem, index: number) => {
         return (
-          <ul key={index}>
-            <input
-              type="checkbox"
-              checked={false}
-              onChange={(e) => handleChangeForComplete(e, item, index)}
-            />
-            <span>{item.title}</span>
+          <ul key={index}
+            className='flex flex-col'>
+            <div className='flex items-center border-2 border-stone-300 rounded-md p-4 bg-zinc-100'>
+              <input
+                className='flex m-2 appearance-none p-2 bg-white rounded-md border-2'
+                type="checkbox"
+                checked={false}
+                onChange={(e) => handleChangeForComplete(e, item, index)}
+              />
+              <div className='flex flex-col'>
+                <span className='text-sm'>{item.title}</span>
+                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+              </div>
+
+            </div>
           </ul>
         )
       }
@@ -59,13 +68,22 @@ function Task() {
     return (
       completedTask.map((item: TaskItem, index: number) => {
         return (
-          <ul key={index}>
-            <input
-              type="checkbox"
-              checked={true}
-              onChange={(e) => handleChangeForUndo(e, item, index)}
-            />
-            <span>{item.title}</span>
+          <ul key={index}
+            className='flex flex-col'>
+            <div className='flex items-center border-2 border-stone-300 bg-green-100 rounded-md p-4'>
+              <input
+                className='flex m-2 appearance-none p-2 bg-green-700 rounded-md border-2'
+                type="checkbox"
+                id={`todo-${index}`}
+                checked={true}
+                onChange={(e) => handleChangeForUndo(e, item, index)}
+              />
+              <div className='flex flex-col'>
+                <span className='text-sm'>{item.title}</span>
+                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+              </div>
+
+            </div>
           </ul>
         )
       }
@@ -73,11 +91,18 @@ function Task() {
   }
 
   return (
-    <div>
-      <h1 className='pt-5 pb-5'>Incomplete</h1>
-      {displayIncompleteTasks()}
-      <p className='pt-10'>Complete</p>
-      {displayCompletedTasks()}
+    <div className='flex flex-col items-center justify-center min-h-screen m-2'>
+      <div className='w-full max-w-fit border-8 border-stone-500 p-24 bg-stone-200'>
+        <h1 className='text-3xl'>Task</h1>
+        <div>
+          <p className='pt-2 pb-1 text-sm'>Incomplete</p>
+          {displayIncompleteTasks()}
+        </div>
+        <div>
+          <p className='pt-2 text-sm'>Complete</p>
+          {displayCompletedTasks()}
+        </div>
+      </div>
     </div>
 
   )
