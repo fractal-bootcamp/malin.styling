@@ -30,12 +30,20 @@ function Task() {
 
   const [incompleteTasks, setIncompleteTasks] = useState<TaskItem[]>([
     {
-      title: 'Install Tailwind',
-      description: 'Get Tailwind installed on your project'
+      title: 'Set up Routing',
+      description: 'Setup React Router and page navigation'
     },
     {
       title: 'Task Page',
       description: 'Make a basic Task Page'
+    },
+    {
+      title: 'Make the Task List',
+      description: 'Modify the page so that its a task list ordered by completion and make sure it can handle reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreally long words'
+    },
+    {
+      title: 'Message Thread',
+      description: 'Make a message thread'
     }
   ]);
 
@@ -52,9 +60,9 @@ function Task() {
                 checked={false}
                 onChange={(e) => handleChangeForComplete(e, item, index)}
               />
-              <div className='flex flex-col'>
+              <div className='flex flex-col min-w-0'>
                 <span className='text-sm'>{item.title}</span>
-                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+                <p className='mt-1 text-xs text-gray-600 break-words'>{item.description}</p>
               </div>
 
             </div>
@@ -78,9 +86,9 @@ function Task() {
                 checked={true}
                 onChange={(e) => handleChangeForUndo(e, item, index)}
               />
-              <div className='flex flex-col'>
+              <div className='flex flex-col min-w-0'>
                 <span className='text-sm'>{item.title}</span>
-                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+                <p className='mt-1 text-xs text-gray-600 break-words'>{item.description}</p>
               </div>
 
             </div>
@@ -92,15 +100,12 @@ function Task() {
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen m-2'>
-      <div className='w-full max-w-fit border-8 border-stone-500 p-24 bg-stone-200'>
-        <h1 className='text-3xl'>Task</h1>
+      <div className='w-full max-w-3xl border-8 border-stone-500 p-24 bg-stone-200'>
+        <h1 className='text-3xl'>Task List</h1>
         <div>
-          <p className='pt-2 pb-1 text-sm'>Incomplete</p>
-          {displayIncompleteTasks()}
-        </div>
-        <div>
-          <p className='pt-2 text-sm'>Complete</p>
+          <p className='pt-2 pb-1 text-sm'>Sorted by completion</p>
           {displayCompletedTasks()}
+          {displayIncompleteTasks()}
         </div>
       </div>
     </div>
@@ -108,4 +113,4 @@ function Task() {
   )
 }
 
-export default Task;
+export default TaskList;
