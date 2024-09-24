@@ -3,7 +3,7 @@ import { useState } from 'react'
 import '../index.css'
 
 //JSX.Element
-function TaskList() {
+function Task() {
 
   interface TaskItem {
     title: string;
@@ -30,12 +30,20 @@ function TaskList() {
 
   const [incompleteTasks, setIncompleteTasks] = useState<TaskItem[]>([
     {
-      title: 'Install Tailwind',
-      description: 'Get Tailwind installed on your project'
+      title: 'Set up Routing',
+      description: 'Setup React Router and page navigation'
     },
     {
       title: 'Task Page',
       description: 'Make a basic Task Page'
+    },
+    {
+      title: 'Make the Task List',
+      description: 'Modify the page so that its a task list ordered by completion and make sure it can handle reallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreallyreally long words'
+    },
+    {
+      title: 'Message Thread',
+      description: 'Make a message thread'
     }
   ]);
 
@@ -45,16 +53,16 @@ function TaskList() {
         return (
           <ul key={index}
             className='flex flex-col'>
-            <div className='flex items-center border-2 border-stone-300 rounded-md p-4 bg-zinc-100'>
+            <div className='flex items-center border-2 border-stone-300 rounded-md p-4 bg-zinc-100 mb-2'>
               <input
                 className='flex m-2 appearance-none p-2 bg-white rounded-md border-2'
                 type="checkbox"
                 checked={false}
                 onChange={(e) => handleChangeForComplete(e, item, index)}
               />
-              <div className='flex flex-col'>
+              <div className='flex flex-col min-w-0'>
                 <span className='text-sm'>{item.title}</span>
-                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+                <p className='mt-1 text-xs text-gray-600 break-words'>{item.description}</p>
               </div>
 
             </div>
@@ -70,7 +78,7 @@ function TaskList() {
         return (
           <ul key={index}
             className='flex flex-col'>
-            <div className='flex items-center border-2 border-stone-300 bg-green-100 rounded-md p-4'>
+            <div className='flex items-center border-2 border-stone-300 bg-green-100 rounded-md p-4 mb-2'>
               <input
                 className='flex m-2 appearance-none p-2 bg-green-700 rounded-md border-2'
                 type="checkbox"
@@ -78,9 +86,9 @@ function TaskList() {
                 checked={true}
                 onChange={(e) => handleChangeForUndo(e, item, index)}
               />
-              <div className='flex flex-col'>
+              <div className='flex flex-col min-w-0'>
                 <span className='text-sm'>{item.title}</span>
-                <p className='mt-1 text-xs text-gray-600'>{item.description}</p>
+                <p className='mt-1 text-xs text-gray-600 break-words'>{item.description}</p>
               </div>
 
             </div>
@@ -92,15 +100,12 @@ function TaskList() {
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen m-2'>
-      <div className='w-full max-w-fit border-8 border-stone-500 p-24 bg-stone-200'>
-        <h1 className='text-3xl'>Task</h1>
+      <div className='w-full max-w-3xl border-8 border-stone-500 p-24 bg-stone-200'>
+        <h1 className='text-3xl'>Task List</h1>
         <div>
-          <p className='pt-2 pb-1 text-sm'>Incomplete</p>
-          {displayIncompleteTasks()}
-        </div>
-        <div>
-          <p className='pt-2 text-sm'>Complete</p>
+          <p className='pt-2 pb-1 text-sm'>Sorted by completion</p>
           {displayCompletedTasks()}
+          {displayIncompleteTasks()}
         </div>
       </div>
     </div>
@@ -108,4 +113,4 @@ function TaskList() {
   )
 }
 
-export default TaskList;
+export default Task;
